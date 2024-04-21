@@ -1,4 +1,5 @@
 from time import sleep
+from tqdm import tqdm
 
 from selenium import webdriver
 from selenium.common import NoSuchElementException
@@ -111,7 +112,12 @@ class EcommerceScraper:
 def get_all_products() -> None:
     scraper = EcommerceScraper()
 
-    for page_name, url in URLS_TO_SCRAPE.items():
+    for page_name, url in tqdm(
+            URLS_TO_SCRAPE.items(),
+            desc="Total progress",
+            position=0,
+            leave=True
+    ):
         products = scraper.scrape_all_products(urljoin(BASE_URL, url))
         csv_writer(page_name, products)
 
