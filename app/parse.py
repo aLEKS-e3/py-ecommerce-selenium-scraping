@@ -96,7 +96,7 @@ class EcommerceScraper:
             num_of_reviews=num_of_reviews,
         )
 
-    def scrape_all_products(self, url_to_parse: str) -> [Product]:
+    def scrape_all_products(self, url_to_parse: str) -> list[Product]:
         self.driver.get(url_to_parse)
         self.accept_cookies()
         self.extract_all_products()

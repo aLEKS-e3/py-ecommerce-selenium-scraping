@@ -14,7 +14,7 @@ class Product:
 PRODUCT_FIELDS = [field.name for field in fields(Product)]
 
 
-def csv_writer(filename: str, products: [Product]) -> None:
+def csv_writer(filename: str, products: list[Product]) -> None:
     with open(f"{filename}.csv", "w+") as file:
         writer = csv.writer(file)
         writer.writerow(PRODUCT_FIELDS)
